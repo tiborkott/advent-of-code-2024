@@ -1,21 +1,35 @@
+import kotlin.math.abs
+
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+    fun part1(firstList: MutableList<Int>, secondList: MutableList<Int>): Int {
+        firstList.sort()
+        secondList.sort()
+        var sumOfDistances = 0
+        for (i in firstList.indices) {
+            sumOfDistances += abs(firstList[i] - secondList[i])
+        }
+        return sumOfDistances
     }
 
-    fun part2(input: List<String>): Int {
-        return input.size
+    fun part2(firstList: MutableList<Int>, secondList: MutableList<Int>): Int {
+        var similarityScore = 0
+
+        firstList.forEach{ number ->
+            similarityScore += number * secondList.count { it == number }
+        }
+
+        return similarityScore
     }
 
-    // Test if implementation meets criteria from the description, like:
-    check(part1(listOf("test_input")) == 1)
-
-    // Or read a large test input from the `src/Day01_test.txt` file:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    // Read the input from the `src/Day01.txt` file.
     val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+    val firstList = mutableListOf<Int>()
+    val secondList = mutableListOf<Int>()
+
+    input.forEach { line ->
+        firstList.add(line.split("\\s+".toRegex())[0].toInt())
+        secondList.add(line.split("\\s+".toRegex())[1].toInt())
+    }
+
+    println("Part 1 solution = " + part1(firstList,secondList))
+    println("Part 2 solution = " + part2(firstList,secondList))
 }
