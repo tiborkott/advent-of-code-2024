@@ -21,7 +21,7 @@ fun main() {
         return similarityScore
     }
 
-    val input = readInput("Day01")
+    val input = readInputLines("Day01")
     val firstList = mutableListOf<Int>()
     val secondList = mutableListOf<Int>()
 

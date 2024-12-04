@@ -24,7 +24,7 @@ fun main() {
         return numberOfSafeReports
     }
 
-    val input = readInput("Day02")
+    val input = readInputLines("Day02")
     val reports = mutableListOf<Report>()
     input.forEach { line ->
         val report = Report()

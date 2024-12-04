@@ -37,7 +37,7 @@ fun main() {
         return result
     }
 
-    val input = readInput("Day03")
+    val input = readInputLines("Day03")
 
     println("Part 1 solution = " + part1(input))
     println("Part 2 solution = " + part2(input))
